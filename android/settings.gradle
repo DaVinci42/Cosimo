@@ -1,0 +1,3 @@
+rootProject.name = 'Cosimo'
+
+include ':app'
