@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import { StyleSheet, ScrollView } from "react-native";
 import { DrawerNavigator, DrawerItems } from "react-navigation";
 import { Image } from "@shoutem/ui";
+import NoteListComponent from "./NoteListComponent";
 import NoteBookListComponent from "./NoteBookListComponent";
 import SettingComponent from "./SettingComponent";
 
 const routeConfigs = {
+	Note_List: {
+		screen: NoteListComponent
+	},
 	NOTE_BOOK_LIST: {
 		screen: NoteBookListComponent
 	},
@@ -20,6 +24,13 @@ const styles = StyleSheet.create({
 	},
 	drawerContent: {
 		flex: 1
+	},
+	labelStyle: {
+		fontFamily: "Rubik-Regular",
+		fontStyle: "normal",
+		fontWeight: "normal",
+		fontSize: 15,
+		color: "#666666"
 	}
 });
 
@@ -39,8 +50,8 @@ const drawerConfig = {
 	drawerCloseRoute: "DrawerClose",
 	drawerToggleRoute: "DrawerToggle",
 	contentOptions: {
-		activeTintColor: "#e91e63",
-		style: styles.drawerContent
+		style: styles.drawerContent,
+		labelStyle: styles.labelStyle
 	}
 };
 

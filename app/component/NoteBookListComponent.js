@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Text, Button, View, StyleSheet } from "react-native";
-import { NavigationBar, Icon, Title } from "@shoutem/ui";
+import { Button, View, StyleSheet } from "react-native";
+import { NavigationBar, Icon, Title, Text } from "@shoutem/ui";
 
-export const NOTE_BOOK_LIST = "NoteBookList";
+export const NOTE_BOOK_LIST = "Note Book List";
 
 export default class NodeBookListComponent extends Component {
 	static navigationOptions = {

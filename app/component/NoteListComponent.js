@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Button, View, StyleSheet } from "react-native";
 import { NavigationBar, Icon, Title, Text } from "@shoutem/ui";
 
-export const SETTING = "Setting";
+export const NOTE_LIST = "Note List";
 
-export default class SettingComponent extends Component {
+export default class NodeListComponent extends Component {
 	static navigationOptions = {
-		drawerLabel: SETTING
+		drawerLabel: NOTE_LIST
 	};
 
 	render() {
@@ -14,11 +14,11 @@ export default class SettingComponent extends Component {
 			<View style={styles.container}>
 				<NavigationBar
 					leftComponent={
-						<Icon name="back" style={styles.leftNavigation} />
+						<Icon name="sidebar" style={styles.leftNavigation} />
 					}
-					centerComponent={<Title>{SETTING}</Title>}
+					centerComponent={<Title>{NOTE_LIST}</Title>}
 				/>
-				<Text>Setting Items Show Here</Text>
+				<Text>Notes Info</Text>
 			</View>
 		);
 	}
