@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { DrawerNavigator } from "react-navigation";
+import { StyleSheet, ScrollView } from "react-native";
+import { DrawerNavigator, DrawerItems } from "react-navigation";
+import { Image } from "@shoutem/ui";
 import NoteBookListComponent from "./NoteBookListComponent";
 import SettingComponent from "./SettingComponent";
 
@@ -12,4 +14,34 @@ const routeConfigs = {
 	}
 };
 
-export default DrawerNavigator(routeConfigs);
+const styles = StyleSheet.create({
+	container: {
+		flex: 1
+	},
+	drawerContent: {
+		flex: 1
+	}
+});
+
+const CustomDrawerContentComponent = props => (
+	<ScrollView style={styles.container}>
+		<Image
+			styleName="large-banner"
+			source={require("./../image/bg_drawer_header.jpg")}
+		/>
+		<DrawerItems {...props} />
+	</ScrollView>
+);
+
+const drawerConfig = {
+	contentComponent: CustomDrawerContentComponent,
+	drawerOpenRoute: "DrawerOpen",
+	drawerCloseRoute: "DrawerClose",
+	drawerToggleRoute: "DrawerToggle",
+	contentOptions: {
+		activeTintColor: "#e91e63",
+		style: styles.drawerContent
+	}
+};
+
+export default DrawerNavigator(routeConfigs, drawerConfig);

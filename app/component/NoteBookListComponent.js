@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Text, Button, View, StyleSheet } from "react-native";
-import AppStatusBar from "./AppStatusBar";
 import { NavigationBar, Icon, Title } from "@shoutem/ui";
 
 export const NOTE_BOOK_LIST = "NoteBookList";
@@ -13,7 +12,6 @@ export default class NodeBookListComponent extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<AppStatusBar />
 				<NavigationBar
 					leftComponent={
 						<Icon name="sidebar" style={styles.leftNavigation} />
