@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 	drawerContent: {
 		flex: 1
 	},
-	labelStyle: {
+	drawerLabel: {
 		fontFamily: "Rubik-Regular",
 		fontStyle: "normal",
 		fontWeight: "normal",
@@ -51,7 +51,7 @@ const drawerConfig = {
 	drawerToggleRoute: "DrawerToggle",
 	contentOptions: {
 		style: styles.drawerContent,
-		labelStyle: styles.labelStyle
+		labelStyle: styles.drawerLabel
 	}
 };
 
