@@ -3,15 +3,15 @@ import { StyleSheet, ScrollView } from "react-native";
 import { DrawerNavigator, DrawerItems } from "react-navigation";
 import { Image } from "@shoutem/ui";
 import NoteListComponent from "./NoteListComponent";
-import NoteBookListComponent from "./NoteBookListComponent";
+import NoteBookComponent from "./NoteBookComponent";
 import SettingComponent from "./SettingComponent";
 
 const routeConfigs = {
 	Note_List: {
 		screen: NoteListComponent
 	},
-	NOTE_BOOK_LIST: {
-		screen: NoteBookListComponent
+	NOTE_BOOKS: {
+		screen: NoteBookComponent
 	},
 	SETTING: {
 		screen: SettingComponent

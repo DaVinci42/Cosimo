@@ -1,24 +1,37 @@
+import NoteBook from "./bean/NoteBook";
+import Note from "./bean/Note";
+
 const RNFS = require("react-native-fs");
 
 let NOTE_ROOT_DIR = RNFS.ExternalStorageDirectoryPath + "/Download/Notes";
 
-function listNoteBooks() {
-	// TODO
-	RNFS.readFile(NOTE_ROOT_DIR)
-		.then(result => {
-			let dirs = [];
-			for (i in result) {
-			}
-		})
-		.catch(e => {
-			console.log(e);
+let NoteManager = {
+	listNoteBooks(): Promise<NoteBook[]> {
+		return new Promise((resolve, reject) => {
+			RNFS.readDir(NOTE_ROOT_DIR)
+				.then(files => {
+					let books = files
+						.filter(file => {
+							return file.isDirectory() === true;
+						})
+						.map(file => {
+							return new NoteBook(
+								file.name,
+								file.path,
+								file.mtime
+							);
+						});
+					resolve(books);
+				})
+				.catch(e => {
+					reject(e);
+				});
 		});
-}
+	},
 
-function notesInBook(noteBook: String) {
-	// return notes in noteBook
-}
+	notesInBook(noteBook: NoteBook): Promise<Note[]> {},
 
-function allNotes() {
-	// return all notes
-}
+	allNotes(): Promise<Note[]> {}
+};
+
+module.exports = NoteManager;
