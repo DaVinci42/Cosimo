@@ -1,48 +1,59 @@
 import React, { Component } from "react";
-import { Button, View, StyleSheet } from "react-native";
-import {
-	NavigationBar,
-	Icon,
-	Title,
-	Text,
-	ListView,
-	Divider,
-	TouchableOpacity
-} from "@shoutem/ui";
+import { View, StyleSheet } from "react-native";
+import { NavigationBar, Icon, Title, Text, Button } from "@shoutem/ui";
 import NoteBook from "../bean/NoteBook";
 import NoteManager from "../NoteManager";
 
 export const NOTE_BOOKS = "Note Books";
 
 export default class NodeBookComponent extends Component {
+	static navigationOptions = {
+		drawerLabel: NOTE_BOOKS
+	};
+
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			dataSource: []
+			bookButtons: []
 		};
 
+		this.fetchNoteBooks = this.fetchNoteBooks.bind(this);
+		this.buttonFromNoteBook = this.buttonFromNoteBook.bind(this);
+		this.noteBookDidPressed = this.noteBookDidPressed.bind(this);
+
+		this.fetchNoteBooks();
+	}
+
+	fetchNoteBooks(): void {
 		NoteManager.listNoteBooks()
 			.then(noteBooks => {
 				this.setState({
-					dataSource: noteBooks
+					bookButtons: noteBooks
+						// manully add ALL at the end
+						.concat(new NoteBook("ALL", ""))
+						.map(book => this.buttonFromNoteBook(book))
 				});
 			})
 			.catch(e => console.log(e));
 	}
 
-	renderRow(noteBook) {
+	buttonFromNoteBook(book: NoteBook): Button {
 		return (
-			<TouchableOpacity>
-				<Title>{noteBook.name}</Title>
-				<Divider styleName="line" />
-			</TouchableOpacity>
+			<Button
+				onPress={() => this.noteBookDidPressed(book)}
+				styleName="sm-gutter"
+				key={book.path}
+			>
+				<Text>{book.name}</Text>
+			</Button>
 		);
 	}
 
-	static navigationOptions = {
-		drawerLabel: NOTE_BOOKS
-	};
+	noteBookDidPressed(noteBook: NoteBook): void {
+		// DAN'S TODO: navigate
+		console.log(noteBook.name);
+	}
 
 	render() {
 		return (
@@ -54,10 +65,9 @@ export default class NodeBookComponent extends Component {
 					}
 					centerComponent={<Title>{NOTE_BOOKS}</Title>}
 				/>
-				<ListView
-					data={this.state.dataSource}
-					renderRow={this.renderRow}
-				/>
+				<View style={styles.booksContainer}>
+					{this.state.bookButtons}
+				</View>
 			</View>
 		);
 	}
@@ -67,12 +77,16 @@ const styles = StyleSheet.flatten({
 	container: {
 		flex: 1,
 		flexDirection: "column",
-		justifyContent: "center",
 		alignItems: "stretch",
 		backgroundColor: "#F5FCFF"
 	},
 	leftNavigation: {
 		marginLeft: 16,
 		marginRight: 16
+	},
+	booksContainer: {
+		flex: 1,
+		flexDirection: "row",
+		alignItems: "flex-start"
 	}
 });

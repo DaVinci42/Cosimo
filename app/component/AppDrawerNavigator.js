@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 		fontStyle: "normal",
 		fontWeight: "normal",
 		fontSize: 15,
-		color: "#666666"
+		color: "#222222"
 	}
 });
 
