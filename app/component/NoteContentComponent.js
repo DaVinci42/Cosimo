@@ -4,6 +4,6 @@ import { NavigationBar, Icon, Title, Text } from "@shoutem/ui";
 
 export class NoteContentComponent extends Component {
 	render() {
-		return <View />;
+		return <Text>Note Content</Text>;
 	}
 }

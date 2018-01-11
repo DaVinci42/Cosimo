@@ -12,7 +12,7 @@ import {
 	ROUTE_NOTE_CONTENT
 } from "../Constant";
 
-export default StackNavigator({
+export const AppStackNavigator = StackNavigator({
 	ROUTE_NOTE_BOOKS: {
 		screen: NoteBooksComponent
 	},
