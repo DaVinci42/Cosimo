@@ -3,15 +3,11 @@ import { Button, View, StyleSheet } from "react-native";
 import { NavigationBar, Icon, Title, Text } from "@shoutem/ui";
 
 export default class NoteInBookComponent extends Component {
+	constructor(props) {
+		super(props);
 
-
-constructor(props) {
-  super(props);
-
-  this.noteBook = props.navigation.state.params.noteBook
-  this.state = {};
-}
-
+		this.noteBook = props.navigation.state.params.noteBook;
+	}
 
 	render() {
 		return (

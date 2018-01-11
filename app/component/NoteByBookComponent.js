@@ -29,6 +29,6 @@ const styles = StyleSheet.flatten({
 	},
 	leftNavigation: {
 		marginLeft: 16,
-		marginRight: 16  
+		marginRight: 16
 	}
 });
