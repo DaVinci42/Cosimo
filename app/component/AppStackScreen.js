@@ -21,13 +21,13 @@ const route = {
 	},
 	ROUTE_STACK_NOTE_BOOKS: {
 		screen: NoteBooksComponent
+	},
+	ROUTE_STACK_NOTE_IN_BOOK: {
+		screen: NoteInBookComponent
+	},
+	ROUTE_STACK_NOTE_CONTENT: {
+		screen: NoteContentComponent
 	}
-	// ROUTE_STACK_NOTE_IN_BOOK: {
-	// 	screen: NoteInBookComponent
-	// },
-	// ROUTE_STACK_NOTE_CONTENT: {
-	// 	screen: NoteContentComponent
-	// }
 };
 
 const NoteByBookStackNavigator = StackNavigator(route, {
