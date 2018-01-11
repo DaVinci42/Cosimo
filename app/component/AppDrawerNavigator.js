@@ -2,18 +2,28 @@ import React, { Component } from "react";
 import { StyleSheet, ScrollView } from "react-native";
 import { DrawerNavigator, DrawerItems } from "react-navigation";
 import { Image } from "@shoutem/ui";
+
+import NoteByBookComponent from "./NoteByBookComponent";
 import NoteListComponent from "./NoteListComponent";
-import NoteBookComponent from "./NoteBookComponent";
+import NoteBooksComponent from "./NoteBooksComponent";
 import SettingComponent from "./SettingComponent";
 
+import {
+	ROUTE_NOTE_BY_BOOK,
+	ROUTE_NOTE_BOOKS,
+	ROUTE_NOTE_IN_BOOK,
+	ROUTE_NOTE_CONTENT,
+	ROUTE_SETTING
+} from "../Constant";
+
 const routeConfigs = {
-	Note_List: {
-		screen: NoteListComponent
+	ROUTE_NOTE_BY_BOOK: {
+		screen: NoteByBookComponent
 	},
-	NOTE_BOOKS: {
-		screen: NoteBookComponent
+	ROUTE_NOTE_BOOKS: {
+		screen: NoteBooksComponent
 	},
-	SETTING: {
+	ROUTE_SETTING: {
 		screen: SettingComponent
 	}
 };
