@@ -2,13 +2,7 @@ import React, { Component } from "react";
 import { Button, View, StyleSheet } from "react-native";
 import { NavigationBar, Icon, Title, Text } from "@shoutem/ui";
 
-export const NOTE_LIST = "Note List";
-
 export default class NodeListComponent extends Component {
-	static navigationOptions = {
-		drawerLabel: NOTE_LIST
-	};
-
 	render() {
 		return (
 			<View style={styles.container}>
@@ -16,7 +10,7 @@ export default class NodeListComponent extends Component {
 					leftComponent={
 						<Icon name="sidebar" style={styles.leftNavigation} />
 					}
-					centerComponent={<Title>{NOTE_LIST}</Title>}
+					centerComponent={<Title>Note List</Title>}
 				/>
 				<Text>Notes Info</Text>
 			</View>

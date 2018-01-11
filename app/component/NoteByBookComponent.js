@@ -1,14 +1,9 @@
 import React, { Component } from "react";
-import { Button, View, StyleSheet } from "react-native";
-import { NavigationBar, Icon, Title, Text } from "@shoutem/ui";
+import { View, StyleSheet } from "react-native";
+import { NavigationBar, Icon, Title, Text, Button } from "@shoutem/ui";
 
-import { ROUTE_NOTE_BY_BOOK } from "../Constant";
-
+const title = "Note By Boooks";
 export default class NotesByBook extends Component {
-	static navigationOptions = {
-		drawerLabel: ROUTE_NOTE_BY_BOOK
-	};
-
 	render() {
 		return (
 			<View style={styles.container}>
@@ -16,9 +11,10 @@ export default class NotesByBook extends Component {
 					leftComponent={
 						<Icon name="sidebar" style={styles.leftNavigation} />
 					}
-					centerComponent={<Title>{ROUTE_NOTE_BY_BOOK}</Title>}
+					centerComponent={<Title>{title}</Title>}
 				/>
-				<Text>{ROUTE_NOTE_BY_BOOK}</Text>
+
+				<Text>{title}</Text>
 			</View>
 		);
 	}

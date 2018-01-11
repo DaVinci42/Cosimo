@@ -3,30 +3,24 @@ import { StyleSheet, ScrollView } from "react-native";
 import { DrawerNavigator, DrawerItems } from "react-navigation";
 import { Image } from "@shoutem/ui";
 
-import NoteByBookComponent from "./NoteByBookComponent";
-import NoteListComponent from "./NoteListComponent";
-import NoteBooksComponent from "./NoteBooksComponent";
 import SettingComponent from "./SettingComponent";
-
-import {
-	ROUTE_NOTE_BY_BOOK,
-	ROUTE_NOTE_BOOKS,
-	ROUTE_NOTE_IN_BOOK,
-	ROUTE_NOTE_CONTENT,
-	ROUTE_SETTING
-} from "../Constant";
+import { NoteByBookScreen, NoteBooksScreen } from "./AppStackScreen";
 
 const routeConfigs = {
-	ROUTE_NOTE_BY_BOOK: {
-		screen: NoteByBookComponent
+	ROUTE_DRAWER_NOTE_BY_BOOK: {
+		screen: NoteByBookScreen
 	},
-	ROUTE_NOTE_BOOKS: {
-		screen: NoteBooksComponent
+	ROUTE_DRAWER_NOTE_BOOKS: {
+		screen: NoteBooksScreen
 	},
-	ROUTE_SETTING: {
+	ROUTE_DRAWER_SETTING: {
 		screen: SettingComponent
 	}
 };
+
+const ROUTE_DRAWER_NOTE_BY_BOOK = "ROUTE_DRAWER_NOTE_BY_BOOK";
+const ROUTE_DRAWER_NOTE_BOOKS = "ROUTE_DRAWER_NOTE_BOOKS";
+const ROUTE_DRAWER_SETTING = "ROUTE_DRAWER_SETTING";
 
 const styles = StyleSheet.create({
 	container: {
@@ -66,3 +60,9 @@ const drawerConfig = {
 };
 
 export default DrawerNavigator(routeConfigs, drawerConfig);
+
+export {
+	ROUTE_DRAWER_NOTE_BY_BOOK,
+	ROUTE_DRAWER_NOTE_BOOKS,
+	ROUTE_DRAWER_SETTING
+};

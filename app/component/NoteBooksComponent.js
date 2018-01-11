@@ -5,13 +5,8 @@ import { NavigationBar, Icon, Title, Text, Button } from "@shoutem/ui";
 import NoteBook from "../bean/NoteBook";
 import NoteManager from "../NoteManager";
 
-import { ROUTE_NOTE_BOOKS } from "../Constant";
-
+const title = "Note Books";
 export default class NoteBooksComponent extends Component {
-	static navigationOptions = {
-		drawerLabel: ROUTE_NOTE_BOOKS
-	};
-
 	constructor(props) {
 		super(props);
 
@@ -60,7 +55,7 @@ export default class NoteBooksComponent extends Component {
 					leftComponent={
 						<Icon name="sidebar" style={styles.leftNavigation} />
 					}
-					centerComponent={<Title>{ROUTE_NOTE_BOOKS}</Title>}
+					centerComponent={<Title>{title}</Title>}
 				/>
 				<View style={styles.booksContainer}>
 					{this.state.bookButtons}
