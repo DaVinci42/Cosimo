@@ -5,7 +5,7 @@ import { NavigationBar, Icon, Title, Text, Button } from "@shoutem/ui";
 import NoteBook from "../bean/NoteBook";
 import NoteManager from "../NoteManager";
 
-import {ROUTE_STACK_NOTE_IN_BOOK} from './AppStackScreen'
+import { ROUTE_STACK_NOTE_IN_BOOK } from "./AppStackScreen";
 
 const title = "Note Books";
 export default class NoteBooksComponent extends Component {
@@ -42,7 +42,9 @@ export default class NoteBooksComponent extends Component {
 		};
 
 		this.noteBookDidPressed = (book: NoteBook) => {
-			this.props.navigation.navigate(ROUTE_STACK_NOTE_IN_BOOK,{noteBook:book})
+			this.props.navigation.navigate(ROUTE_STACK_NOTE_IN_BOOK, {
+				noteBook: book
+			});
 		};
 
 		this.fetchNoteBooks();
