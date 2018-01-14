@@ -14,26 +14,36 @@ export default class NoteInBookComponent extends Component {
 			notes: []
 		};
 
-		this.fetchNotesInBook = (noteBook: NoteBook) => {
-			NoteManager.notesInBook(noteBook)
-				.then(notes => {
-					this.setState({
-						notes: notes
-					});
-				})
-				.catch(e => console.log(e));
-		};
-		this.didPressedNote = (note: Note) => {
-			this.props.navigation.navigate(ROUTE_STACK_NOTE_CONTENT, {
-				note: note
-			});
-		};
+		this.fetchNotesInBook = this.fetchNotesInBook.bind(this);
+		this.didPressedNote = this.didPressedNote.bind(this);
+		this.renderRow = this.renderRow.bind(this);
 
 		this.fetchNotesInBook(this.noteBook);
 	}
 
+	fetchNotesInBook(noteBook: NoteBook) {
+		NoteManager.notesInBook(noteBook)
+			.then(notes => {
+				this.setState({
+					notes: notes
+				});
+			})
+			.catch(e => console.log(e));
+	}
+
+	didPressedNote(note: Note) {
+		this.props.navigation.navigate(ROUTE_STACK_NOTE_CONTENT, {
+			note: note
+		});
+	}
+
 	renderRow(note: Note) {
-		return <Button onPress={this.didPressedNote(note)} title={note.name} />;
+		return (
+			<Button
+				onPress={() => this.didPressedNote(note)}
+				title={note.name}
+			/>
+		);
 	}
 
 	render() {

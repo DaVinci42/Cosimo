@@ -16,38 +16,42 @@ export default class NoteBooksComponent extends Component {
 			bookButtons: []
 		};
 
-		this.fetchNoteBooks = () => {
-			NoteManager.listNoteBooks()
-				.then(noteBooks => {
-					this.setState({
-						bookButtons: noteBooks
-							// manully add ALL at the end
-							.concat(new NoteBook("ALL", ""))
-							.map(book => this.buttonFromNoteBook(book))
-					});
-				})
-				.catch(e => console.log(e));
-		};
-
-		this.buttonFromNoteBook = (book: NoteBook) => {
-			return (
-				<Button
-					onPress={() => this.noteBookDidPressed(book)}
-					styleName="sm-gutter"
-					key={book.path}
-				>
-					<Text>{book.name}</Text>
-				</Button>
-			);
-		};
-
-		this.noteBookDidPressed = (book: NoteBook) => {
-			this.props.navigation.navigate(ROUTE_STACK_NOTE_IN_BOOK, {
-				noteBook: book
-			});
-		};
+		this.fetchNoteBooks = this.fetchNoteBooks.bind(this);
+		this.buttonFromNoteBook = this.buttonFromNoteBook.bind(this);
+		this.noteBookDidPressed = this.noteBookDidPressed.bind(this);
 
 		this.fetchNoteBooks();
+	}
+
+	fetchNoteBooks() {
+		NoteManager.listNoteBooks()
+			.then(noteBooks => {
+				this.setState({
+					bookButtons: noteBooks
+						// manully add ALL at the end
+						.concat(new NoteBook("ALL", ""))
+						.map(book => this.buttonFromNoteBook(book))
+				});
+			})
+			.catch(e => console.log(e));
+	}
+
+	noteBookDidPressed(book: NoteBook) {
+		this.props.navigation.navigate(ROUTE_STACK_NOTE_IN_BOOK, {
+			noteBook: book
+		});
+	}
+
+	buttonFromNoteBook(book: NoteBook) {
+		return (
+			<Button
+				onPress={() => this.noteBookDidPressed(book)}
+				styleName="sm-gutter"
+				key={book.path}
+			>
+				<Text>{book.name}</Text>
+			</Button>
+		);
 	}
 
 	render() {
