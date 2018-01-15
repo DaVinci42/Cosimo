@@ -1,9 +1,23 @@
 import React, { Component } from "react";
 import { View, StyleSheet } from "react-native";
-import { NavigationBar, Icon, Title, Text, Button } from "@shoutem/ui";
+import { NavigationBar, Icon, Title, Text } from "@shoutem/ui";
 
-const title = "Note By Boooks";
-export default class NotesByBook extends Component {
+export default class DrawerNoteBooksScreen extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			navigationBar: (
+				<NavigationBar
+					leftComponent={
+						<Icon name="sidebar" style={styles.leftNavigation} />
+					}
+					centerComponent={<Title>Note Books</Title>}
+				/>
+			)
+		};
+	}
+
 	render() {
 		return (
 			<View style={styles.container}>
@@ -11,10 +25,9 @@ export default class NotesByBook extends Component {
 					leftComponent={
 						<Icon name="sidebar" style={styles.leftNavigation} />
 					}
-					centerComponent={<Title>{title}</Title>}
+					centerComponent={<Title>Note Books</Title>}
 				/>
-
-				<Text>{title}</Text>
+				<Text>Drawer Note Books Stack Component</Text>
 			</View>
 		);
 	}

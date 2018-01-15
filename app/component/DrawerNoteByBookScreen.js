@@ -1,8 +1,23 @@
 import React, { Component } from "react";
-import { Button, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { NavigationBar, Icon, Title, Text } from "@shoutem/ui";
 
-export default class NodeListComponent extends Component {
+export default class DrawerNoteByBookScreen extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			navigationBar: (
+				<NavigationBar
+					leftComponent={
+						<Icon name="sidebar" style={styles.leftNavigation} />
+					}
+					centerComponent={<Title>Note By Book</Title>}
+				/>
+			)
+		};
+	}
+
 	render() {
 		return (
 			<View style={styles.container}>
@@ -10,9 +25,9 @@ export default class NodeListComponent extends Component {
 					leftComponent={
 						<Icon name="sidebar" style={styles.leftNavigation} />
 					}
-					centerComponent={<Title>Note List</Title>}
+					centerComponent={<Title>Note By Book</Title>}
 				/>
-				<Text>Notes Info</Text>
+				<Text>Drawer Note By Book Stack Component</Text>
 			</View>
 		);
 	}
