@@ -4,14 +4,11 @@ import { Text } from "@shoutem/ui";
 
 import AppStyle from "../AppStyle";
 
-export default class SettingComponent extends Component {
+export default class NoteByBookScreen extends Component {
 	render() {
-		console.log("SettingComponent rendered");
-
 		return (
 			<View style={AppStyle.container}>
-				<Text>Setting</Text>
-				<Text>List</Text>
+				<Text>Note By Book</Text>
 			</View>
 		);
 	}

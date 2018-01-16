@@ -3,13 +3,13 @@ import { ScrollView } from "react-native";
 import { DrawerNavigator, DrawerItems } from "react-navigation";
 import { Image } from "@shoutem/ui";
 
-import DrawerNoteByBookScreen from "./DrawerNoteByBookScreen";
-import DrawerNoteBooksScreen from "./DrawerNoteBooksScreen";
-import DrawerSettingScreen from "./DrawerSettingScreen";
-
 import AppStyle from "../AppStyle";
 
-const CustomDrawerContentComponent = props => (
+import NoteByBookScreen from "./NoteByBookScreen";
+import NoteBooksScreen from "./NoteBooksScreen";
+import SettingScreen from "./SettingScreen";
+
+const AppDrawerContentComponent = props => (
 	<ScrollView style={AppStyle.drawerContainer}>
 		<Image
 			styleName="large-banner"
@@ -20,7 +20,7 @@ const CustomDrawerContentComponent = props => (
 );
 
 const drawerConfig = {
-	contentComponent: CustomDrawerContentComponent,
+	contentComponent: AppDrawerContentComponent,
 	drawerOpenRoute: "DrawerOpen",
 	drawerCloseRoute: "DrawerClose",
 	drawerToggleRoute: "DrawerToggle",
@@ -33,18 +33,17 @@ const drawerConfig = {
 const DRAWER_NOTE_BY_BOOK = "Note By Book";
 const DRAWER_NOTE_BOOKS = "Note Books";
 const DRAWER_SETTING = "Setting";
-
 export { DRAWER_NOTE_BY_BOOK, DRAWER_NOTE_BOOKS, DRAWER_SETTING };
 
 const drawerRoute = {
 	[DRAWER_NOTE_BY_BOOK]: {
-		screen: DrawerNoteByBookScreen
+		screen: NoteByBookScreen
 	},
 	[DRAWER_NOTE_BOOKS]: {
-		screen: DrawerNoteBooksScreen
+		screen: NoteBooksScreen
 	},
 	[DRAWER_SETTING]: {
-		screen: DrawerSettingScreen
+		screen: SettingScreen
 	}
 };
 
