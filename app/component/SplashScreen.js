@@ -16,7 +16,7 @@ export default class SplashScreen extends Component {
 	}
 
 	componentWillUnmount() {
-		this.animation.stop();
+		this.animation.reset();
 	}
 
 	render() {
