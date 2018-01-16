@@ -6,11 +6,11 @@ const RNFS = require("react-native-fs");
 let NOTE_ROOT_DIR = RNFS.ExternalStorageDirectoryPath + "/Download/Notes";
 
 export default class NoteManager {
-	getFileExtension = filename => {
+	static getFileExtension = filename => {
 		return filename.slice(((filename.lastIndexOf(".") - 1) >>> 0) + 2);
 	};
 
-	listNoteBooks = () => {
+	static fetchNoteBooks = () => {
 		return new Promise((resolve, reject) => {
 			RNFS.readDir(NOTE_ROOT_DIR)
 				.then(files => {
@@ -33,7 +33,7 @@ export default class NoteManager {
 		});
 	};
 
-	notesInBook = (noteBook: NoteBook) => {
+	static notesInBook = (noteBook: NoteBook) => {
 		return new Promise((resolve, reject) => {
 			RNFS.readDir(noteBook.path)
 				.then(files => {
@@ -61,7 +61,7 @@ export default class NoteManager {
 		});
 	};
 
-	updateNoteContent = (note: Note) => {
+	static updateNoteContent = (note: Note) => {
 		return new Promise((resolve, reject) => {
 			RNFS.readFile(note.path)
 				.then(content => {

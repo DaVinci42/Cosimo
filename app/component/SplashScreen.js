@@ -4,8 +4,6 @@ import LottieView from "lottie-react-native";
 import { STACK_ROUTE_DRAWER } from "./AppStackScreen";
 
 export default class SplashScreen extends Component {
-	mixins: [TimerMixin];
-
 	componentDidMount() {
 		this.animation.play();
 
