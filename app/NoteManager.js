@@ -1,9 +1,9 @@
+import RNFS from "react-native-fs";
+
 import NoteBook from "./bean/NoteBook";
 import Note from "./bean/Note";
 
-const RNFS = require("react-native-fs");
-
-let NOTE_ROOT_DIR = RNFS.ExternalStorageDirectoryPath + "/Download/Notes";
+const NOTE_ROOT_DIR = RNFS.ExternalStorageDirectoryPath + "/Download/Notes";
 
 export default class NoteManager {
 	static timeDescFromDate = date => {
@@ -74,14 +74,18 @@ export default class NoteManager {
 		});
 	};
 
-	static updateNoteContent = (note: Note) => {
+	static fetchNoteContent = (note: Note) => {
 		return new Promise((resolve, reject) => {
 			RNFS.readFile(note.path)
 				.then(content => {
-					note.content = content;
-					resolve(note);
+					resolve(content);
 				})
 				.catch(e => reject(e));
 		});
+	};
+
+	static htmlFromMarkdown = markdown => {
+		// DAN'S TODO
+		return markdown;
 	};
 }

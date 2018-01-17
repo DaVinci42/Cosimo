@@ -13,20 +13,25 @@ import {
 
 import NoteManager from "../NoteManager";
 import AppStyle from "../AppStyle";
+import { STACK_ROUTE_NOTE_CONTENT } from "./AppStackScreen";
 
 export default class NotesInBookComponent extends Component {
-	constructor(props) {
-		super(props);
+	noteBook = this.props.navigation.state.params.book;
 
-		this.noteBook = props.navigation.state.params.book;
-		this.state = {
-			notes: []
-		};
+	state = {
+		notes: []
+	};
+
+	componentWillMount() {
+		this.fetchNotesInBook(this.noteBook);
 	}
 
 	renderRow = note => {
 		return (
-			<Button style={styles.noteContainer}>
+			<Button
+				style={styles.noteContainer}
+				onPress={() => this.didPressedNote(note)}
+			>
 				<Title
 					style={styles.noteTitle}
 					styleName="sm-gutter md-gutter-left"
@@ -54,9 +59,11 @@ export default class NotesInBookComponent extends Component {
 			.catch(e => console.log(e));
 	};
 
-	componentWillMount() {
-		this.fetchNotesInBook(this.noteBook);
-	}
+	didPressedNote = note => {
+		this.props.navigation.navigate(STACK_ROUTE_NOTE_CONTENT, {
+			note: note
+		});
+	};
 
 	render() {
 		return (

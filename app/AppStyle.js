@@ -5,7 +5,6 @@ export default {
 		alignItems: "stretch",
 		backgroundColor: "#F5FCFF"
 	},
-	content: {},
 	leftNavigation: {
 		marginLeft: 16,
 		marginRight: 16

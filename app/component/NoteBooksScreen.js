@@ -17,6 +17,10 @@ export default class NoteBooksScreen extends Component {
 		bookButtons: []
 	};
 
+	componentWillMount() {
+		this.fetchNoteBooks();
+	}
+
 	buttonFromBook = book => {
 		return (
 			<Button
@@ -45,10 +49,6 @@ export default class NoteBooksScreen extends Component {
 			})
 			.catch(e => console.log(e));
 	};
-
-	componentWillMount() {
-		this.fetchNoteBooks();
-	}
 
 	render() {
 		return (
