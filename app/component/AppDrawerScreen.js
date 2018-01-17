@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BackHandler, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { DrawerNavigator, DrawerItems } from "react-navigation";
 import { Image } from "@shoutem/ui";
 
@@ -30,9 +30,9 @@ const drawerConfig = {
 	}
 };
 
-const DRAWER_NOTE_BY_BOOK = "Note By Book";
-const DRAWER_NOTE_BOOKS = "Note Books";
-const DRAWER_SETTING = "Setting";
+const DRAWER_NOTE_BY_BOOK = "DRAWER_NOTE_BY_BOOK";
+const DRAWER_NOTE_BOOKS = "DRAWER_NOTE_BOOKS";
+const DRAWER_SETTING = "DRAWER_SETTING";
 export { DRAWER_NOTE_BY_BOOK, DRAWER_NOTE_BOOKS, DRAWER_SETTING };
 
 const drawerRoute = {
@@ -49,25 +49,11 @@ const drawerRoute = {
 
 const AppDrawer = DrawerNavigator(drawerRoute, drawerConfig);
 
-const kAppDrawerBackListener = "kAppDrawerBackListener";
-export default class AppDrawerScene extends Component {
-	backHandler = () => {
-		BackHandler.exitApp();
-		return true;
-	};
-
-	componentWillMount() {
-		BackHandler.addEventListener(kAppDrawerBackListener, this.backHandler);
-	}
-
-	componentWillUnmount() {
-		BackHandler.removeEventListener(
-			kAppDrawerBackListener,
-			this.backHandler
-		);
-	}
-
+class AppDrawerScene extends Component {
 	render() {
-		return <AppDrawer />;
+		return <AppDrawer navigation={this.props.navigation} />;
 	}
 }
+
+AppDrawerScene.router = AppDrawer.router;
+export default AppDrawerScene;

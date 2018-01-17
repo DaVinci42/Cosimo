@@ -5,6 +5,7 @@ import SplashScreen from "./SplashScreen";
 import AppDrawerScreen from "./AppDrawerScreen";
 import NoteByBookScreen from "./NoteByBookScreen";
 import NoteBooksScreen from "./NoteBooksScreen";
+import NotesInBookComponent from "./NotesInBookComponent";
 import SettingScreen from "./SettingScreen";
 
 const STACK_ROUTE_SPLASH = "Splash";
@@ -35,6 +36,9 @@ export default StackNavigator(
 		},
 		[STACK_ROUTE_NOTE_BY_BOOK]: {
 			screen: NoteByBookScreen
+		},
+		[STACK_ROUTE_NOTES_IN_BOOK]: {
+			screen: NotesInBookComponent
 		},
 		[STACK_ROUTE_NOTE_BOOKS]: {
 			screen: NoteBooksScreen

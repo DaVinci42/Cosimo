@@ -4,11 +4,17 @@ import { Text } from "@shoutem/ui";
 
 import AppStyle from "../AppStyle";
 
+const title = "Setting";
+
 export default class SettingScreen extends Component {
+	static navigationOptions = {
+		drawerLabel: title
+	};
+
 	render() {
 		return (
 			<View style={AppStyle.container}>
-				<Text>SettingScreen</Text>
+				<Text>{title}</Text>
 			</View>
 		);
 	}
