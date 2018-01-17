@@ -49,11 +49,10 @@ const drawerRoute = {
 
 const AppDrawer = DrawerNavigator(drawerRoute, drawerConfig);
 
-class AppDrawerScene extends Component {
+export default class AppDrawerScene extends Component {
+	static router = AppDrawer.router;
+
 	render() {
 		return <AppDrawer navigation={this.props.navigation} />;
 	}
 }
-
-AppDrawerScene.router = AppDrawer.router;
-export default AppDrawerScene;

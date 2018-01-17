@@ -30,11 +30,13 @@ export default class NoteBooksScreen extends Component {
 	};
 
 	didPressedBookButton = book => {
-		this.props.navigation.navigate(STACK_ROUTE_NOTES_IN_BOOK);
+		this.props.navigation.navigate(STACK_ROUTE_NOTES_IN_BOOK, {
+			book: book
+		});
 	};
 
 	fetchNoteBooks = () => {
-		NoteManager.fetchNoteBooks()
+		NoteManager.noteBooks()
 			.then(books => {
 				let buttons = books.map(book => this.buttonFromBook(book));
 				this.setState({
