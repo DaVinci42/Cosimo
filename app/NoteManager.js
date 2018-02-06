@@ -1,25 +1,10 @@
 import RNFS from "react-native-fs";
-import showdown from "showdown";
 
 import NoteBook from "./bean/NoteBook";
 import Note from "./bean/Note";
+import MarkdownIt from "markdown-it";
 
 const NOTE_ROOT_DIR = RNFS.ExternalStorageDirectoryPath + "/Download/Notes";
-
-const ContentPrefix = `
-<!DOCTYPE HTML>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>Cosimo</title>
-</head>
-
-<body>`;
-
-const ContentPostfix = `
-</body>
-</html>`;
 
 export default class NoteManager {
 	static timeDescFromDate = date => {
@@ -101,8 +86,7 @@ export default class NoteManager {
 	};
 
 	static htmlFromMarkdown = markdown => {
-		let converter = new showdown.Converter();
-		let content = converter.makeHtml(markdown);
-		return ContentPrefix + content + ContentPostfix;
+		let md = new MarkdownIt();
+		return md.render(markdown);
 	};
 }
