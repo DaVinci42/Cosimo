@@ -9,16 +9,16 @@
   "dependencies": {
     "@shoutem/ui": "^0.23.4",
     "lottie-react-native": "^2.3.2",
-    "markdown-it": "^8.4.0",
+    "markdown-it": "^8.4.1",
     "react": "16.2.0",
-    "react-native": "0.53.0",
-    "react-native-fs": "^2.9.9",
-    "react-navigation": "^1.0.0"
+    "react-native": "0.53.3",
+    "react-native-fs": "^2.9.11",
+    "react-navigation": "^1.2.0"
   },
   "devDependencies": {
-    "babel-jest": "22.1.0",
+    "babel-jest": "22.4.1",
     "babel-preset-react-native": "4.0.0",
-    "jest": "22.1.4",
+    "jest": "22.4.2",
     "react-test-renderer": "16.2.0"
   },
   "jest": {
