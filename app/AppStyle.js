@@ -5,6 +5,12 @@ export default {
 		alignItems: "stretch",
 		backgroundColor: "#F5FCFF"
 	},
+	noteBooks: {
+		flex: 1,
+		flexDirection: "row",
+		alignItems: "flex-start",
+		flexWrap: "wrap"
+	},
 	leftNavigation: {
 		marginLeft: 16,
 		marginRight: 16

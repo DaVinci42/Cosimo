@@ -61,15 +61,7 @@ export default class NoteBooksScreen extends Component {
 					centerComponent={<Title>{title}</Title>}
 				/>
 
-				<View
-					style={{
-						flex: 1,
-						flexDirection: "row",
-						alignItems: "flex-start"
-					}}
-				>
-					{this.state.bookButtons}
-				</View>
+				<View style={AppStyle.noteBooks}>{this.state.bookButtons}</View>
 			</View>
 		);
 	}
