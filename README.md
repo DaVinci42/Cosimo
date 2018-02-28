@@ -8,4 +8,4 @@ TODO:
 4. More
 
 
-![](https://raw.githubusercontent.com/DaVinci42/Cosimo/master/raw/screenshot.jpg)
+![](https://github.com/DaVinci42/Cosimo/raw/master/raw/screenshot.jpg)
