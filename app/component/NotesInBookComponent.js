@@ -29,17 +29,17 @@ export default class NotesInBookComponent extends Component {
 	renderRow = note => {
 		return (
 			<Button
-				style={styles.noteContainer}
+				style={AppStyle.noteContainer}
 				onPress={() => this.didPressedNote(note)}
 			>
 				<Title
-					style={styles.noteTitle}
+					style={AppStyle.noteTitle}
 					styleName="sm-gutter md-gutter-left"
 				>
 					{note.name}
 				</Title>
 				<Caption
-					style={styles.noteTime}
+					style={AppStyle.noteTime}
 					styleName="sm-gutter md-gutter-right"
 				>
 					{NoteManager.timeDescFromDate(note.updateTime)}
@@ -80,19 +80,3 @@ export default class NotesInBookComponent extends Component {
 		);
 	}
 }
-
-const styles = StyleSheet.flatten({
-	noteContainer: {
-		flex: 1,
-		flexDirection: "column",
-		justifyContent: "center",
-		alignItems: "stretch"
-	},
-	noteTitle: {
-		fontSize: 15,
-		textAlign: "left"
-	},
-	noteTime: {
-		textAlign: "right"
-	}
-});

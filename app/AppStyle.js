@@ -23,5 +23,18 @@ export default {
 		fontWeight: "normal",
 		fontSize: 15,
 		color: "#222222"
+	},
+	noteContainer: {
+		flex: 1,
+		flexDirection: "column",
+		justifyContent: "center",
+		alignItems: "stretch"
+	},
+	noteTitle: {
+		fontSize: 15,
+		textAlign: "left"
+	},
+	noteTime: {
+		textAlign: "right"
 	}
 };

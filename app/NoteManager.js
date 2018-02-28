@@ -23,6 +23,32 @@ export default class NoteManager {
 		return fileName.replace(/\.[^/.]+$/, "");
 	};
 
+	static notesByBook = () => {
+		return new Promise((resolve, reject) => {
+			NoteManager.noteBooks()
+				.then(books => {
+					var allPromise = [];
+					books.forEach(book => {
+						allPromise.push(NoteManager.notesInBook(book));
+					});
+					Promise.all(allPromise)
+						.then(values => {
+							var noteArray = values
+								.filter(notes => notes.length > 0)
+								.map(notes => {
+									return {
+										data: notes,
+										title: notes[0].noteBook.name
+									};
+								});
+							resolve(noteArray);
+						})
+						.catch(e => reject(e));
+				})
+				.catch(e => reject(e));
+		});
+	};
+
 	static noteBooks = () => {
 		return new Promise((resolve, reject) => {
 			RNFS.readDir(NOTE_ROOT_DIR)

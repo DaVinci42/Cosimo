@@ -1,8 +1,18 @@
 import React, { Component } from "react";
-import { View, BackHandler } from "react-native";
-import { Text, NavigationBar, Icon, Title } from "@shoutem/ui";
+import { View, BackHandler, SectionList } from "react-native";
+import {
+	Text,
+	NavigationBar,
+	Icon,
+	Title,
+	Button,
+	Caption,
+	Divider,
+	Subtitle
+} from "@shoutem/ui";
 
 import AppStyle from "../AppStyle";
+import NoteManager from "../NoteManager";
 
 const title = "Note By Book";
 
@@ -13,6 +23,14 @@ export default class NoteByBookScreen extends Component {
 		drawerLabel: title
 	};
 
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			sections: []
+		};
+	}
+
 	backHandler = () => {
 		BackHandler.exitApp();
 		return true;
@@ -20,6 +38,7 @@ export default class NoteByBookScreen extends Component {
 
 	componentWillMount() {
 		BackHandler.addEventListener(kAppDrawerBackListener, this.backHandler);
+		this.fetchNotesByBook();
 	}
 
 	componentWillUnmount() {
@@ -29,7 +48,63 @@ export default class NoteByBookScreen extends Component {
 		);
 	}
 
+	fetchNotesByBook = () => {
+		NoteManager.notesByBook()
+			.then(noteArray => {
+				console.log("noteArray: ", noteArray);
+				this.setState({
+					sections: noteArray
+				});
+			})
+			.catch(e => console.log(e));
+	};
+
+	didPressedNote = note => {};
+
+	didPressedNoteBook = book => {};
+
+	renderItem = ({ item }) => {
+		return (
+			<Button
+				style={AppStyle.noteContainer}
+				onPress={() => this.didPressedNote(item)}
+			>
+				<Title
+					style={AppStyle.noteTitle}
+					styleName="sm-gutter md-gutter-left"
+				>
+					{item.name}
+				</Title>
+				<Caption
+					style={AppStyle.noteTime}
+					styleName="sm-gutter md-gutter-right"
+				>
+					{NoteManager.timeDescFromDate(item.updateTime)}
+				</Caption>
+			</Button>
+		);
+	};
+
+	renderSectionHeader = ({ section }) => {
+		return (
+			<Button style={AppStyle.noteContainer}>
+				<Text>{section.title}</Text>
+			</Button>
+		);
+	};
+
+	renderSectionFooter = ({ section }) => {
+		return <Divider styleName="section-header" />;
+	};
+
+	itemSeparatorComponent = () => {
+		return <Divider styleName="line" />;
+	};
+
+	keyExtractor = (item, index) => index;
+
 	render() {
+		console.log("render: ", this.state.sections);
 		return (
 			<View style={AppStyle.container}>
 				<NavigationBar
@@ -39,15 +114,14 @@ export default class NoteByBookScreen extends Component {
 					}
 					centerComponent={<Title>{title}</Title>}
 				/>
-				<Text
-					style={{
-						flex: 1,
-						textAlign: "center",
-						textAlignVertical: "center"
-					}}
-				>
-					Note By Book
-				</Text>
+				<SectionList
+					renderItem={this.renderItem}
+					renderSectionHeader={this.renderSectionHeader}
+					sections={this.state.sections}
+					keyExtractor={this.keyExtractor}
+					ItemSeparatorComponent={this.itemSeparatorComponent}
+					renderSectionFooter={this.renderSectionFooter}
+				/>
 			</View>
 		);
 	}
