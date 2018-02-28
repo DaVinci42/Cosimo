@@ -7,12 +7,15 @@ import {
 	Title,
 	Button,
 	Caption,
-	Divider,
-	Subtitle
+	Divider
 } from "@shoutem/ui";
 
 import AppStyle from "../AppStyle";
 import NoteManager from "../NoteManager";
+import {
+	STACK_ROUTE_NOTES_IN_BOOK,
+	STACK_ROUTE_NOTE_CONTENT
+} from "./AppStackScreen";
 
 const title = "Note By Book";
 
@@ -51,7 +54,6 @@ export default class NoteByBookScreen extends Component {
 	fetchNotesByBook = () => {
 		NoteManager.notesByBook()
 			.then(noteArray => {
-				console.log("noteArray: ", noteArray);
 				this.setState({
 					sections: noteArray
 				});
@@ -59,9 +61,18 @@ export default class NoteByBookScreen extends Component {
 			.catch(e => console.log(e));
 	};
 
-	didPressedNote = note => {};
+	didPressedNote = note => {
+		this.props.navigation.navigate(STACK_ROUTE_NOTE_CONTENT, {
+			note: note
+		});
+	};
 
-	didPressedNoteBook = book => {};
+	didPressedNoteBook = book => {
+		console.log("didPressedNoteBook: ", book);
+		this.props.navigation.navigate(STACK_ROUTE_NOTES_IN_BOOK, {
+			book: book
+		});
+	};
 
 	renderItem = ({ item }) => {
 		return (
@@ -87,8 +98,11 @@ export default class NoteByBookScreen extends Component {
 
 	renderSectionHeader = ({ section }) => {
 		return (
-			<Button style={AppStyle.noteContainer}>
-				<Text>{section.title}</Text>
+			<Button
+				style={AppStyle.noteContainer}
+				onPress={() => this.didPressedNoteBook(section.book)}
+			>
+				<Text>{section.book.name}</Text>
 			</Button>
 		);
 	};
@@ -104,7 +118,6 @@ export default class NoteByBookScreen extends Component {
 	keyExtractor = (item, index) => index;
 
 	render() {
-		console.log("render: ", this.state.sections);
 		return (
 			<View style={AppStyle.container}>
 				<NavigationBar

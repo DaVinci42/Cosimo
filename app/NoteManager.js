@@ -38,7 +38,7 @@ export default class NoteManager {
 								.map(notes => {
 									return {
 										data: notes,
-										title: notes[0].noteBook.name
+										book: notes[0].noteBook
 									};
 								});
 							resolve(noteArray);
