@@ -34,22 +34,22 @@ export default class NoteByBookScreen extends Component {
 		};
 	}
 
-	backHandler = () => {
-		BackHandler.exitApp();
-		return true;
-	};
+	// backHandler = () => {
+	// 	BackHandler.exitApp();
+	// 	return true;
+	// };
 
 	componentWillMount() {
-		BackHandler.addEventListener(kAppDrawerBackListener, this.backHandler);
+		// BackHandler.addEventListener(kAppDrawerBackListener, this.backHandler);
 		this.fetchNotesByBook();
 	}
 
-	componentWillUnmount() {
-		BackHandler.removeEventListener(
-			kAppDrawerBackListener,
-			this.backHandler
-		);
-	}
+	// componentWillUnmount() {
+	// 	BackHandler.removeEventListener(
+	// 		kAppDrawerBackListener,
+	// 		this.backHandler
+	// 	);
+	// }
 
 	fetchNotesByBook = () => {
 		NoteManager.notesByBook()
